@@ -1,0 +1,94 @@
+﻿@model MVC_ZiekenhuisOpnames.Models.PatientViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Patient</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id" />
+            <div class="form-group">
+                <label asp-for="Voornaam" class="control-label"></label>
+                <input asp-for="Voornaam" class="form-control" />
+                <span asp-validation-for="Voornaam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Achternaam" class="control-label"></label>
+                <input asp-for="Achternaam" class="form-control" />
+                <span asp-validation-for="Achternaam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Leeftijd" class="control-label"></label>
+                <input asp-for="Leeftijd" class="form-control" />
+                <span asp-validation-for="Leeftijd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Straat" class="control-label"></label>
+                <input asp-for="Straat" class="form-control" />
+                <span asp-validation-for="Straat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HuisNr" class="control-label"></label>
+                <input asp-for="HuisNr" class="form-control" />
+                <span asp-validation-for="HuisNr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bus" class="control-label"></label>
+                <input asp-for="Bus" class="form-control" />
+                <span asp-validation-for="Bus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Postcode" class="control-label"></label>
+                <input asp-for="Postcode" class="form-control" />
+                <span asp-validation-for="Postcode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Stad" class="control-label"></label>
+                <input asp-for="Stad" class="form-control" />
+                <span asp-validation-for="Stad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Geslacht" class="control-label"></label>
+                <input asp-for="Geslacht" class="form-control" />
+                <span asp-validation-for="Geslacht" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ID_Voorkant" class="control-label"></label>
+                <input asp-for="pathImgIdCardVoorkant" class="form-control" type="hidden" />
+                @if (!String.IsNullOrEmpty(Model.pathImgIdCardVoorkant))
+                {
+                    <p><img src="@Model.pathImgIdCardVoorkant" class="img-fluid medium"/></p>
+                }
+                <input asp-for="ID_Voorkant" class="form-control" />
+                @*<span asp-validation-for="pathImgIdCardVoorkant" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <label asp-for="ID_Achterkant" class="control-label"></label>
+                <input asp-for="pathImgIdCardAchterkant" class="form-control" type="hidden" />
+                @if (!String.IsNullOrEmpty(Model.pathImgIdCardAchterkant))
+                {
+                    <p><img src="@Model.pathImgIdCardAchterkant" class="img-fluid medium"/></p>
+                }
+                <input asp-for="ID_Achterkant" class="form-control" />
+                @*<span asp-validation-for="pathImgIdCardAchterkant" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

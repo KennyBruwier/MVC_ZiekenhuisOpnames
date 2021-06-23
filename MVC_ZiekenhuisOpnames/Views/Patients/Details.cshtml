@@ -1,0 +1,93 @@
+﻿@model MVC_ZiekenhuisOpnames.Models.PatientViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Patient</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Voornaam)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Voornaam)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Achternaam)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Achternaam)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Leeftijd)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Leeftijd)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Straat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Straat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HuisNr)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HuisNr)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Bus)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Bus)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Postcode)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Postcode)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Stad)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Stad)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Geslacht)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Geslacht)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.pathImgIdCardVoorkant)
+        </dt>
+        <dd class="col-sm-10">
+            @if (!String.IsNullOrEmpty(Model.pathImgIdCardVoorkant))
+            {
+                <p><img src="@Model.pathImgIdCardVoorkant" class="img-fluid medium"/></p>
+            }
+            @*@Html.DisplayFor(model => model.pathImgIdCardVoorkant)*@
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.pathImgIdCardAchterkant)
+        </dt>
+        <dd class="col-sm-10">
+            @if (!String.IsNullOrEmpty(Model.pathImgIdCardAchterkant))
+            {
+                <p><img src="@Model.pathImgIdCardAchterkant"  class="img-fluid medium"/></p>
+            }
+
+            @*@Html.DisplayFor(model => model.pathImgIdCardAchterkant)*@
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

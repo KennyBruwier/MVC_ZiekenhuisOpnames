@@ -1,0 +1,103 @@
+﻿@model IEnumerable<MVC_ZiekenhuisOpnames.Models.Patient>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Voornaam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Achternaam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Leeftijd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Straat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HuisNr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Postcode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Geslacht)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pathImgIdCardVoorkant)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pathImgIdCardAchterkant)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Voornaam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Achternaam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Leeftijd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Straat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HuisNr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Postcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Geslacht)
+            </td>
+            <td>
+                @if(!String.IsNullOrEmpty( item.pathImgIdCardVoorkant))
+                {
+                    <img src="@item.pathImgIdCardVoorkant" class="img-thumbnail" />
+                }
+                @*@Html.DisplayFor(modelItem => item.pathImgIdCardVoorkant)*@
+            </td>
+            <td>
+                @if (!String.IsNullOrEmpty(item.pathImgIdCardAchterkant))
+                {
+                    <img src="@item.pathImgIdCardAchterkant" class="img-thumbnail" />
+                }
+                @*@Html.DisplayFor(modelItem => item.pathImgIdCardAchterkant)*@
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

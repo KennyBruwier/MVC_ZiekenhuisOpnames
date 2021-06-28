@@ -55,15 +55,25 @@
             </div>
             <div class="form-group">
                 <label asp-for="Geslacht" class="control-label"></label>
-                <input asp-for="Geslacht" class="form-control" />
+                <select asp-for="Geslacht" class="form-control" asp-items="@Model.Geslachten"></select>
+                @*@Html.DisplayFor(m => m.Geslacht)*@
+                <div>
+                    @foreach (var geslacht in Model.Geslachten)
+                    {
+                        <div>
+                            @Html.RadioButtonFor(m => m.Geslacht, geslacht.Value)
+                            <label for="@geslacht">@geslacht.Text</label>
+                        </div>
+                    }
+                </div>
                 <span asp-validation-for="Geslacht" class="text-danger"></span>
-            </div>
+            </div>            
             <div class="form-group">
                 <label asp-for="ID_Voorkant" class="control-label"></label>
                 <input asp-for="pathImgIdCardVoorkant" class="form-control" type="hidden" />
                 @if (!String.IsNullOrEmpty(Model.pathImgIdCardVoorkant))
                 {
-                    <p><img src="@Model.pathImgIdCardVoorkant" class="img-fluid medium"/></p>
+                    <p><img src="@Model.pathImgIdCardVoorkant" class="img-fluid medium" /></p>
                 }
                 <input asp-for="ID_Voorkant" class="form-control" />
                 @*<span asp-validation-for="pathImgIdCardVoorkant" class="text-danger"></span>*@
@@ -73,7 +83,7 @@
                 <input asp-for="pathImgIdCardAchterkant" class="form-control" type="hidden" />
                 @if (!String.IsNullOrEmpty(Model.pathImgIdCardAchterkant))
                 {
-                    <p><img src="@Model.pathImgIdCardAchterkant" class="img-fluid medium"/></p>
+                    <p><img src="@Model.pathImgIdCardAchterkant" class="img-fluid medium" /></p>
                 }
                 <input asp-for="ID_Achterkant" class="form-control" />
                 @*<span asp-validation-for="pathImgIdCardAchterkant" class="text-danger"></span>*@

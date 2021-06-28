@@ -24,7 +24,7 @@ namespace MVC_ZiekenhuisOpnames.Controllers
             _context = context;
             this.hostEnvironment = hostEnvironment;
         }
-        [HttpGet("Index"), HttpGet("Patienten"), HttpGet("opnames"), HttpGet("")]
+        [HttpGet("Patienten"), HttpGet("opnames"), HttpGet("")]
         // GET: Patients
         public async Task<IActionResult> Index()
         {
@@ -52,7 +52,7 @@ namespace MVC_ZiekenhuisOpnames.Controllers
         // GET: Patients/Create
         public IActionResult Create()
         {
-            return View();
+            return View(new PatientViewModel());
         }
 
         // POST: Patients/Create

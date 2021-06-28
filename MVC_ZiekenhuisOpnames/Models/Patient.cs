@@ -1,6 +1,7 @@
 ﻿using MVC_ZiekenhuisOpnames.Models.Validations;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Linq;
@@ -38,8 +39,14 @@ namespace MVC_ZiekenhuisOpnames.Models
         public string Stad { get; set; }
         [Required]
         public char Geslacht { get; set; }
+        [DisplayName("Foto identiteitskaart (voorkant)")]
         public string pathImgIdCardVoorkant { get; set; }
+        [DisplayName("Foto identiteitskaart (achterkant)")]
         public string pathImgIdCardAchterkant { get; set; }
 
+        public int ImgVoorkantId { get; set; }
+        public int ImgAchterkantId { get; set; }
+        public virtual IDImage ImgVoorkant { get; set; }
+        public virtual IDImage ImgAchterkant { get; set; }
     }
 }

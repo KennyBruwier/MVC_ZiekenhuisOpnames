@@ -24,7 +24,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Leeftijd" class="control-label"></label>
-                <input asp-for="Leeftijd" class="form-control" type="date"/>
+                <input asp-for="Leeftijd" class="form-control"/>
                 <span asp-validation-for="Leeftijd" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -54,7 +54,17 @@
             </div>
             <div class="form-group">
                 <label asp-for="Geslacht" class="control-label"></label>
-                <input asp-for="Geslacht" class="form-control" />
+                <select asp-for="Geslacht" class="form-control" asp-items="@Model.Geslachten"></select>
+                @*@Html.DisplayFor(m => m.Geslacht)*@
+                <div>
+                    @foreach (var geslacht in Model.Geslachten)
+                    {
+                        <div>
+                            @Html.RadioButtonFor(m => m.Geslacht, geslacht.Value)
+                            <label for="@geslacht">@geslacht.Text</label>
+                        </div>
+                    }
+                </div>
                 <span asp-validation-for="Geslacht" class="text-danger"></span>
             </div>
             <div class="form-group" >

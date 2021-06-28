@@ -26,6 +26,7 @@ namespace MVC_ZiekenhuisOpnames
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddTransient<>
             services.AddControllersWithViews();
         }
 
@@ -38,7 +39,7 @@ namespace MVC_ZiekenhuisOpnames
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Home/ErrorUser");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
@@ -53,7 +54,7 @@ namespace MVC_ZiekenhuisOpnames
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Patients}/{action=Index}/{id?}");
             });
         }
     }

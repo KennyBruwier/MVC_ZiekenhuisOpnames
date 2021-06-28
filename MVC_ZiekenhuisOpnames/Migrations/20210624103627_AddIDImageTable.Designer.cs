@@ -4,14 +4,16 @@ using MVC_ZiekenhuisOpnames.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MVC_ZiekenhuisOpnames.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20210624103627_AddIDImageTable")]
+    partial class AddIDImageTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -97,28 +99,18 @@ namespace MVC_ZiekenhuisOpnames.Migrations
 
                     b.HasIndex("ImgAchterkantId");
 
-                    b.HasIndex("ImgVoorkantId");
-
                     b.ToTable("Patients");
                 });
 
             modelBuilder.Entity("MVC_ZiekenhuisOpnames.Models.Patient", b =>
                 {
-                    b.HasOne("MVC_ZiekenhuisOpnames.Models.IDImage", "ImgAchterkant")
+                    b.HasOne("MVC_ZiekenhuisOpnames.Models.IDImage", "IDImage")
                         .WithMany()
                         .HasForeignKey("ImgAchterkantId")
-                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MVC_ZiekenhuisOpnames.Models.IDImage", "ImgVoorkant")
-                        .WithMany()
-                        .HasForeignKey("ImgVoorkantId")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-
-                    b.Navigation("ImgAchterkant");
-
-                    b.Navigation("ImgVoorkant");
+                    b.Navigation("IDImage");
                 });
 #pragma warning restore 612, 618
         }

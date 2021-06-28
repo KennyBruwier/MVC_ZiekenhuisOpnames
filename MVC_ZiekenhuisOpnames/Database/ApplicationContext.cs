@@ -13,6 +13,22 @@ namespace MVC_ZiekenhuisOpnames.Database
         {
 
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Patient>()
+                .HasOne(s => s.ImgVoorkant)
+                .WithMany()
+                .HasForeignKey(s => s.ImgVoorkantId)
+                .OnDelete(DeleteBehavior.ClientCascade);
+
+            modelBuilder.Entity<Patient>()
+                .HasOne(s => s.ImgAchterkant)
+                .WithMany()
+                .HasForeignKey(s => s.ImgAchterkantId)
+                .OnDelete(DeleteBehavior.ClientCascade);
+            //base.OnModelCreating(modelBuilder);
+        }
         public DbSet<Patient>Patients { get; set; }
+        public DbSet<IDImage>IDImages { get; set; }
     }
 }
